@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1-table" author="Sternenfighter">
+        <createTable tableName="book">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="title" type="Varchar(255)"/>
+            <column name="author" type="Varchar(255)"/>
+            <column name="publisher" type="Varchar(255)"/>
+            <column name="year" type="int"/>
+            <column name="category" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-table" author="Sternenfighter">
+        <createTable tableName="customer">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="Varchar(255)"/>
+            <column name="email" type="Varchar(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="password" type="Varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3-table" author="Sternenfighter">
+        <createTable tableName="category">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="Varchar(255)"/>
+            <column name="description" type="Varchar(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
