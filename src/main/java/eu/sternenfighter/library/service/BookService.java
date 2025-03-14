@@ -21,6 +21,12 @@ public class BookService {
         this.categoryRepository = categoryRepository;
     }
 
+    /**
+     * create a new book
+     * @param income new book
+     * @return new saved book
+     * @throws IllegalArgumentException happens when category cannot be found
+     */
     public Book saveBook(Book income) {
         if (categoryRepository.findById(income.getCategoryId()).isPresent()) {
             Book book = new Book();
@@ -34,6 +40,13 @@ public class BookService {
         throw new IllegalArgumentException("Category not Found");
     }
 
+    /**
+     * update a given book
+     * @param id book id
+     * @param book book with new values
+     * @return the updated book
+     * @throws IllegalArgumentException book not found
+     */
     public Book update(long id, Book book) {
         Optional<Book> optional = bookRepository.findById(id);
         if (optional.isPresent()) {
@@ -43,14 +56,27 @@ public class BookService {
         throw new IllegalArgumentException("Book not Found");
     }
 
+    /**
+     * delete a book by given id
+     * @param id book id
+     */
     public void delete(long id) {
         bookRepository.deleteById(id);
     }
 
+    /**
+     * find book by given id
+     * @param id book id
+     * @return book if exist
+     */
     public Optional<Book> findById(long id) {
         return bookRepository.findById(id);
     }
 
+    /**
+     * find all books
+     * @return list of all books
+     */
     public List<Book> getAll() {
         return bookRepository.findAll();
     }

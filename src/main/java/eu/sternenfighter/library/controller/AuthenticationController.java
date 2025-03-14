@@ -56,7 +56,7 @@ public class AuthenticationController {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 
-        String token = Jwts.builder().setId("softtekJWT").setSubject(username).claim("authorities",
+        String token = Jwts.builder().setId("tokenid").setSubject(username).claim("authorities",
                         grantedAuthorities.stream().map(GrantedAuthority::getAuthority).toList())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 600000))
